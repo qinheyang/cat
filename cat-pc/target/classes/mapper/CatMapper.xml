@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sad.web.dao.CatDao">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.sad.web.entity.Cat">
+        <id column="cat_id" property="catId" />
+        <result column="create_by" property="createBy" />
+        <result column="create_time" property="createTime" />
+        <result column="update_by" property="updateBy" />
+        <result column="update_time" property="updateTime" />
+        <result column="cat_name" property="catName" />
+        <result column="state" property="state" />
+        <result column="color" property="color" />
+        <result column="sex" property="sex" />
+        <result column="is_sterile" property="isSterile" />
+        <result column="sterile_time" property="sterileTime" />
+        <result column="first_witness" property="firstWitness" />
+        <result column="disposition" property="disposition" />
+        <result column="appearance" property="appearance" />
+        <result column="picture" property="picture" />
+        <result column="avatar" property="avatar" />
+        <result column="del_flag" property="delFlag" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        create_by,
+        create_time,
+        update_by,
+        update_time,
+        cat_id, cat_name, state, color, sex, is_sterile, sterile_time, first_witness, disposition, appearance, picture, avatar,del_flag
+    </sql>
+    <select id="getDetailByCatName" resultType="com.sad.web.entity.Cat">
+        select cat_id, cat_name, state, color, sex, is_sterile, sterile_time, first_witness, disposition, appearance, picture,del_flag
+        from t_cat
+        where cat_name=#{catName}
+    </select>
+
+</mapper>
